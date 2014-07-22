@@ -24,4 +24,6 @@ bmcApp.run(function($rootScope) {
 				$rootScope.observer_functions[i]();
 			}
 		};
+
+		$rootScope.clear_canvas();
 });
