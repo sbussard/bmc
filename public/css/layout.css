@@ -11,7 +11,8 @@ body {
 }
 
 body {
-	padding: 25px;
+	padding: 25px 25px 25px 75px;
+	font-family: 'open sans';
 	background-color: #f0f0f0;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -21,12 +22,34 @@ body {
 	user-select: none;
 }
 
+nav {
+	position: fixed;
+	width: 50px;
+	height: 100%;
+	top: 0;
+	left: 0;
+	text-align: center;
+	padding: 10px;
+	font-weight: lighter;
+	font-size: 30px;
+	background-color: #444;
+}
+
+	nav > a {
+		color: #fff;
+		text-decoration: none;
+	}
+
+	nav > a:hover {
+		color: #cceeff;
+		text-shadow: 0px -1px 2px #000;
+	}
+
 main {
 	border-top: 1px solid #666;
 	border-left: 1px solid #666;
 	overflow: auto;
 	height: 100%;
-	font-family: 'open sans';
 	background-color: #fff;
 }
 

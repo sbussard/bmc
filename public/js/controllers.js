@@ -26,7 +26,6 @@ function showDesc($scope) {
 		var msg = new SpeechSynthesisUtterance($scope.desc);
 		window.speechSynthesis.speak(msg);
 	}
-
 	return func;
 }
 
@@ -40,10 +39,23 @@ function makeController(block) {
 		$scope.deleteItem = deleteItem($scope);
 		$scope.showDesc = showDesc($scope);
 	};
+
 	bmcControllers.controller(block.cname, controller);
 }
 
 // controllers 
+
+bmcControllers.controller('ioC', function($scope) {
+	$scope.saveBMC = function() {
+		// grab this from some global
+		var text = JSON.stringify({"stephen" : 27});
+
+		var dlObj = document.createElement('a');
+	  dlObj.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+	  dlObj.setAttribute('download', 'bmc.json');
+	  dlObj.click();
+	}
+});
 
 makeController({ cname: 'KeyPartnershipsC', name: 'Key Partnerships', icon: 'link', desc: 'the network of suppliers and partners that make the business model work'});
 makeController({ cname: 'KeyActivitiesC', name: 'Key Activities', icon: 'cogs', desc: 'the most important things a company must do to make a business model work'});
