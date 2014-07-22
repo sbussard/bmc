@@ -62,9 +62,11 @@ bmcControllers.controller('ioC', function($scope, $rootScope) {
 	}
 
 	$scope.loadBMC = function() {
-		var data = {"Key Partnerships":["stephen this is the latest update"],"Key Activities":["ka","lol"],"Key Resources":["kr"],"Value Propositions":[],"Customer Relationships":[],"Channels":[],"Customer Segments":[],"Cost Structure":[],"Revenue Streams":["rs1"]};
-		$rootScope.canvas_data = data;
-		$rootScope.update_canvas();
+		if(confirm('Would you like to load a canvas?\n\nyour current canvas will be gone forever if it\'s not saved')) {
+			var data = {"Key Partnerships":["stephen this is the latest update"],"Key Activities":["ka","lol"],"Key Resources":["kr"],"Value Propositions":[],"Customer Relationships":[],"Channels":[],"Customer Segments":[],"Cost Structure":[],"Revenue Streams":["rs1"]};
+			$rootScope.canvas_data = data;
+			$rootScope.update_canvas();
+		}
 	}
 
 	$scope.clearBMC = function() {
