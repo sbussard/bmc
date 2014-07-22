@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Business Model Canvas</title>
+	<link href='http://fonts.googleapis.com/css?family=Coming+Soon' rel='stylesheet' type='text/css'>
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:400,300" rel="stylesheet" type="text/css">
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="public/css/layout.css">
@@ -13,78 +14,60 @@
 		<section s8 ng-controller="KeyPartnersC">
 			<h1>{{ name }}</h1>
 			<i class="fa fa-{{ icon }}"></i>
-			<ul>
-				<li ng-repeat="item in list track by $index">{{ item }}</li>
-				<li ng-click="addNew()">Add New</li>
-			</ul>
+			<button ng-click="addNew()">Add New</button>
+			<ul><li ng-repeat="item in list track by $index" ng-click="deleteItem($index)">{{ item }}</li></ul>
 		</section>
 		<div single>
 			<section s7 ng-controller="KeyActivitiesC">
 				<h1>{{ name }}</h1>
 				<i class="fa fa-{{ icon }}"></i>
-				<ul>
-					<li ng-repeat="item in list track by $index">{{ item }}</li>
-					<li ng-click="addNew()">Add New</li>
-				</ul>
+				<button ng-click="addNew()">Add New</button>
+				<ul><li ng-repeat="item in list track by $index" ng-click="deleteItem($index)">{{ item }}</li></ul>
 			</section><br>
 			<section s6 ng-controller="KeyResourcesC">
 				<h1>{{ name }}</h1>
 				<i class="fa fa-{{ icon }}"></i>
-				<ul>
-					<li ng-repeat="item in list track by $index">{{ item }}</li>
-					<li ng-click="addNew()">Add New</li>
-				</ul>
+				<button ng-click="addNew()">Add New</button>
+				<ul><li ng-repeat="item in list track by $index" ng-click="deleteItem($index)">{{ item }}</li></ul>
 			</section>
 		</div>
 		<section s2 ng-controller="ValuePropositionsC">
 			<h1>{{ name }}</h1>
 			<i class="fa fa-{{ icon }}"></i>
-			<ul>
-				<li ng-repeat="item in list track by $index">{{ item }}</li>
-				<li ng-click="addNew()">Add New</li>
-			</ul>
+			<button ng-click="addNew()">Add New</button>
+			<ul><li ng-repeat="item in list track by $index" ng-click="deleteItem($index)">{{ item }}</li></ul>
 		</section>
 		<div single>
 			<section s4 ng-controller="CustomerRelationshipsC">
 				<h1>{{ name }}</h1>
 				<i class="fa fa-{{ icon }}"></i>
-				<ul>
-					<li ng-repeat="item in list track by $index">{{ item }}</li>
-					<li ng-click="addNew()">Add New</li>
-				</ul>
+				<button ng-click="addNew()">Add New</button>
+				<ul><li ng-repeat="item in list track by $index" ng-click="deleteItem($index)">{{ item }}</li></ul>
 			</section><br>
 			<section s3 ng-controller="ChannelsC">
 				<h1>{{ name }}</h1>
 				<i class="fa fa-{{ icon }}"></i>
-				<ul>
-					<li ng-repeat="item in list track by $index">{{ item }}</li>
-					<li ng-click="addNew()">Add New</li>
-				</ul>
+				<button ng-click="addNew()">Add New</button>
+				<ul><li ng-repeat="item in list track by $index" ng-click="deleteItem($index)">{{ item }}</li></ul>
 			</section>
 		</div>
 		<section s1 ng-controller="CustomerSegmentsC">
 			<h1>{{ name }}</h1>
 			<i class="fa fa-{{ icon }}"></i>
-			<ul>
-				<li ng-repeat="item in list track by $index">{{ item }}</li>
-				<li ng-click="addNew()">Add New</li>
-			</ul>
+			<button ng-click="addNew()">Add New</button>
+			<ul><li ng-repeat="item in list track by $index" ng-click="deleteItem($index)">{{ item }}</li></ul>
 		</section>
 		<section s9 ng-controller="CostStructureC">
 			<h1>{{ name }}</h1>
 			<i class="fa fa-{{ icon }}"></i>
-			<ul>
-				<li ng-repeat="item in list track by $index">{{ item }}</li>
-				<li ng-click="addNew()">Add New</li>
-			</ul>
+			<button ng-click="addNew()">Add New</button>
+			<ul><li ng-repeat="item in list track by $index" ng-click="deleteItem($index)">{{ item }}</li></ul>
 		</section>
 		<section s5 ng-controller="RevenueStreamsC">
 			<h1>{{ name }}</h1>
 			<i class="fa fa-{{ icon }}"></i>
-			<ul>
-				<li ng-repeat="item in list track by $index">{{ item }}</li>
-				<li ng-click="addNew()">Add New</li>
-			</ul>
+			<button ng-click="addNew()">Add New</button>
+			<ul><li ng-repeat="item in list track by $index" ng-click="deleteItem($index)">{{ item }}</li></ul>
 		</section>
 	</main>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
