@@ -1,0 +1,41 @@
+{
+  "name": "bmc",
+  "version": "0.0.0",
+  "authors": [
+    "sbussard <me@stephenbussard.com>"
+  ],
+  "description": "an editable version of the business model canvas",
+  "main": "index.html",
+  "keywords": [
+    "business",
+    "model",
+    "canvas",
+    "generation",
+    "key",
+    "partners",
+    "activities",
+    "resources",
+    "value",
+    "propositions",
+    "cutomer",
+    "relationships",
+    "segments",
+    "channels",
+    "revenue",
+    "streams",
+    "cost",
+    "structure"
+  ],
+  "license": "MIT",
+  "homepage": "stephenbussard.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.20"
+  }
+}

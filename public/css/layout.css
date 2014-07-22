@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  padding: 25px;
+}
+
+main {
+  border-top: 1px solid #666;
+  border-left: 1px solid #666;
+  overflow: auto;
+  height: 100%;
+  font-family: 'open sans';
+}
+
+section {
+  float: left;
+  position: relative;
+  padding: 10px;
+  border-bottom: 1px solid #666;
+  border-right: 1px solid #666;
+  background-color: #fcfcfc;
+}
+  section > h1 {
+    padding: 0;
+    margin: 0 50px 0 5px;
+    line-height: 1.3em;
+    font-weight: normal;
+    font-size: 1.4vw;
+  }
+
+  section > .fa {
+    position: absolute;
+    font-size: 2vmin;
+    color: #333;
+    right: 1vw;
+    top: 1vw;
+  }
+
+[single] {
+  float: left;
+}
+
+/* tall boxes */
+[s8],
+[s2],
+[s1], 
+[single] {
+  height: 70%;
+  width: 20%;
+}
+
+/* short boxes */
+[s7],
+[s6],
+[s4],
+[s3] {
+  width: 100%;
+  height: 50%;
+}
+
+/* bottom row */
+[s9],
+[s5] {
+  height: 30%;
+  width: 50%;
+}
