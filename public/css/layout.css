@@ -43,6 +43,7 @@ section {
 		line-height: 1.3em;
 		font-weight: normal;
 		font-size: 1.7vmin;
+		cursor: help;
 	}
 
 	section > .fa {
