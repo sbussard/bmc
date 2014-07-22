@@ -2,20 +2,24 @@ var bmcControllers = angular.module('bmcControllers', []);
 
 // helpers
 
-function addNew($scope) {
+function addNew($scope, $rootScope) {
 	var func = function() {
 		var itemname = prompt('New item name');
 		if(itemname) {
-			$scope.list.push(itemname);
+			$rootScope.canvas_data[$scope.name].push(itemname);
+			$scope.list = $rootScope.canvas_data[$scope.name];
+			console.log(JSON.stringify($rootScope.canvas_data));
 		}
 	}
 	return func;
 }
 
-function deleteItem($scope) {
+function deleteItem($scope, $rootScope) {
 	var func = function($index) {
 		if(confirm('Delete ' + $scope.list[$index] + '?')) {
-			$scope.list.splice($index, 1);
+			$rootScope.canvas_data[$scope.name].splice($index, 1);
+			$scope.list = $rootScope.canvas_data[$scope.name];
+			console.log(JSON.stringify($rootScope.canvas_data));
 		}
 	}
 	return func;
@@ -30,30 +34,37 @@ function showDesc($scope) {
 }
 
 function makeController(block) {
-	var controller = function($scope) {
+	var controller = function($scope, $rootScope) {
 		$scope.name = block.name;
 		$scope.icon = block.icon;
 		$scope.desc = block.desc;
 		$scope.list = [];
-		$scope.addNew = addNew($scope);
-		$scope.deleteItem = deleteItem($scope);
+		$scope.addNew = addNew($scope, $rootScope);
+		$scope.deleteItem = deleteItem($scope, $rootScope);
 		$scope.showDesc = showDesc($scope);
+		$scope.update = function() {
+			$scope.list = $rootScope.canvas_data[$scope.name];
+		};
+		$rootScope.observer_functions.push($scope.update);
 	};
-
 	bmcControllers.controller(block.cname, controller);
 }
 
 // controllers 
 
-bmcControllers.controller('ioC', function($scope) {
+bmcControllers.controller('ioC', function($scope, $rootScope) {
 	$scope.saveBMC = function() {
-		// grab this from some global
-		var text = JSON.stringify({"stephen" : 27});
-
+		var canvas_data = JSON.stringify($rootScope.canvas_data);
 		var dlObj = document.createElement('a');
-	  dlObj.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-	  dlObj.setAttribute('download', 'bmc.json');
+	  dlObj.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(canvas_data));
+	  dlObj.setAttribute('download', 'untitled_canvas.json');
 	  dlObj.click();
+	}
+
+	$scope.loadBMC = function() {
+		var data = {"Key Partnerships":["stephen this is the latest update"],"Key Activities":["ka","lol"],"Key Resources":["kr"],"Value Propositions":[],"Customer Relationships":[],"Channels":[],"Customer Segments":[],"Cost Structure":[],"Revenue Streams":["rs1"]};
+		$rootScope.canvas_data = data;
+		$rootScope.update_canvas();
 	}
 });
 
