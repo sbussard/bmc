@@ -66,6 +66,12 @@ bmcControllers.controller('ioC', function($scope, $rootScope) {
 		$rootScope.canvas_data = data;
 		$rootScope.update_canvas();
 	}
+
+	$scope.clearBMC = function() {
+		if(confirm('Do you want to clear this canvas?')) {
+			$rootScope.clear_canvas();
+		}
+	}
 });
 
 makeController({ cname: 'KeyPartnershipsC', name: 'Key Partnerships', icon: 'link', desc: 'the network of suppliers and partners that make the business model work'});
