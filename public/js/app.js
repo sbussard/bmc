@@ -2,47 +2,15 @@
 	var bmcApp = angular.module('bmcApp', ['bmcControllers']);
 
 	bmcApp.run(function($rootScope) {
-			$rootScope.clear_canvas = function() {
-				$rootScope.canvas_data = {
-					'KeyPartnerships': [],
-					'KeyActivities': [],
-					'KeyResources': [],
-					'ValuePropositions': [],
-					'CustomerRelationships': [],
-					'Channels': [],
-					'CustomerSegments': [],
-					'CostStructure': [],
-					'RevenueStreams': []
-				};
-
-				$rootScope.update_canvas();
-			};
-
-			$rootScope.observer_functions = [];
-
-			$rootScope.update_canvas = function() {
-				console.log('update_canvas' + JSON.stringify($rootScope.observer_functions));
-				for(var i in $rootScope.observer_functions) {
-					$rootScope.observer_functions[i]();
-				}
-			};
-
-			$rootScope.load_canvas_data = function(data) {
-				$rootScope.canvas_data = data;
-				$rootScope.update_canvas();
-			};
-
-			$rootScope.clear_canvas();
 	});
 
 	// directives 
 
 	// allows main element to load files
-	bmcApp.directive('main', function($rootScope) {
+	bmcApp.directive('main', function() {
 		var data = {
 			restrict: 'E',
-			scope: {},
-			link: function($scope, element, attrs) {
+			link: function($scope, $elem, $attrs) {
 
 				function onDragEnter(e) {
 					e.stopPropagation();
@@ -71,31 +39,48 @@
 
 						reader.onload = function(event) {
 							content = JSON.parse(event.target.result);
-							$rootScope.load_canvas_data(content);
+							$scope.loadBMC(content);
 						};
 					// }
 				}
 
-				element.bind('dragenter', onDragEnter);
-				element.bind('dragover', onDragOver);
-				element.bind('dragleave', onDragLeave);
-				element.bind('drop', onDropFile);
+				$elem.bind('dragenter', onDragEnter);
+				$elem.bind('dragover', onDragOver);
+				$elem.bind('dragleave', onDragLeave);
+				$elem.bind('drop', onDropFile);
 
-				return element;
+				return $elem;
 			}
 		};
 
 		return data;
 	});
 
-	bmcApp.directive('block', function() {
+	bmcApp.directive('canvasBlock', function() {
 		var data = {
-			restrict: 'E',
+			restrict: 'A',
+			transclude: true,
 			scope: {
 				block: '=info'
 			},
-			link: function($scope, element, attrs) {
-				element.addClass(attrs.info);
+			link: function($scope, $elem, $attrs, $ctrl) {
+				$scope.addItem = function() {
+					var itemname = prompt('New item name');
+					if(itemname) {
+						$scope.block.items.push(itemname);
+					}
+				}
+
+				$scope.delItem = function($index) {
+					if(confirm('Delete ' + $scope.block.items[$index] + '?')) {
+						$scope.block.items.splice($index, 1);
+					}
+				}
+
+				$scope.showDesc = function() {
+					var msg = new SpeechSynthesisUtterance($scope.block.desc);
+					window.speechSynthesis.speak(msg);
+				}
 			},
 			templateUrl: 'public/partials/block.html'
 		};
