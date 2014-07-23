@@ -12,6 +12,10 @@ body {
 
 body {
 	padding: 25px 25px 25px 75px;
+	/* 
+	min-width: 1024px;
+	min-height: 500px;
+	*/
 	font-family: 'open sans';
 	background-color: #f0f0f0;
 	-webkit-touch-callout: none;
@@ -107,31 +111,33 @@ section {
 		-o-transform: rotate(-3deg); /* Opera */
 	}
 
-[single] {
+block,
+.single {
+	display: block;
 	float: left;
 }
 
 /* tall boxes */
-[s8],
-[s2],
-[s1], 
-[single] {
+.s8,
+.s2,
+.s1, 
+.single {
 	height: 70%;
 	width: 20%;
 }
 
 /* short boxes */
-[s7],
-[s6],
-[s4],
-[s3] {
+.s7,
+.s6,
+.s4,
+.s3 {
 	width: 100%;
 	height: 50%;
 }
 
 /* bottom row */
-[s9],
-[s5] {
+.s9,
+.s5 {
 	height: 30%;
 	width: 50%;
 }

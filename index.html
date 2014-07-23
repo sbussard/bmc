@@ -9,71 +9,28 @@
 	<link rel="stylesheet" type="text/css" href="public/css/layout.css">
 </head>
 <body>
-	<nav ng-controller="ioC">
+	<nav ng-controller="IOController">
 		<a href="" ng-click="loadBMC()" title="open canvas"><i class="fa fa-folder-open"></i></a>
 		<a href="" ng-click="saveBMC()" title="save canvas"><i class="fa fa-download"></i></a>
-		<a href="" ng-click="clearBMC()" title="save canvas"><i class="fa fa-eraser"></i></a>
+		<a href="" ng-click="clearBMC()" title="clear canvas"><i class="fa fa-eraser"></i></a>
 	</nav>
-	<main>
+	<main dropzone ng-controller="CanvasController">
 		<!-- sections are numbered according to the book -->
-		<section s8 ng-controller="KeyPartnershipsC">
-			<h1 ng-click="showDesc()">{{ name }}</h1>
-			<i class="fa fa-{{ icon }}"></i>
-			<button ng-click="addNew()">Add New</button>
-			<ul><li ng-repeat="item in list track by $index" ng-click="deleteItem($index)">{{ item }}</li></ul>
-		</section>
-		<div single>
-			<section s7 ng-controller="KeyActivitiesC">
-				<h1 ng-click="showDesc()">{{ name }}</h1>
-				<i class="fa fa-{{ icon }}"></i>
-				<button ng-click="addNew()">Add New</button>
-				<ul><li ng-repeat="item in list track by $index" ng-click="deleteItem($index)">{{ item }}</li></ul>
-			</section><br>
-			<section s6 ng-controller="KeyResourcesC">
-				<h1 ng-click="showDesc()">{{ name }}</h1>
-				<i class="fa fa-{{ icon }}"></i>
-				<button ng-click="addNew()">Add New</button>
-				<ul><li ng-repeat="item in list track by $index" ng-click="deleteItem($index)">{{ item }}</li></ul>
-			</section>
+		<!-- top row -->
+		<block info="KeyPartners" class="s8"></block>
+		<div class="single">
+			<block info="KeyActivities" class="s7"></block><br>
+			<block info="KeyResources" class="s6"></block>
 		</div>
-		<section s2 ng-controller="ValuePropositionsC">
-			<h1 ng-click="showDesc()">{{ name }}</h1>
-			<i class="fa fa-{{ icon }}"></i>
-			<button ng-click="addNew()">Add New</button>
-			<ul><li ng-repeat="item in list track by $index" ng-click="deleteItem($index)">{{ item }}</li></ul>
-		</section>
-		<div single>
-			<section s4 ng-controller="CustomerRelationshipsC">
-				<h1 ng-click="showDesc()">{{ name }}</h1>
-				<i class="fa fa-{{ icon }}"></i>
-				<button ng-click="addNew()">Add New</button>
-				<ul><li ng-repeat="item in list track by $index" ng-click="deleteItem($index)">{{ item }}</li></ul>
-			</section><br>
-			<section s3 ng-controller="ChannelsC">
-				<h1 ng-click="showDesc()">{{ name }}</h1>
-				<i class="fa fa-{{ icon }}"></i>
-				<button ng-click="addNew()">Add New</button>
-				<ul><li ng-repeat="item in list track by $index" ng-click="deleteItem($index)">{{ item }}</li></ul>
-			</section>
+		<block info="ValuePropositions" class="s2"></block>
+		<div class="single">
+			<block info="CustomerRelationships" class="s4"></block><br>
+			<block info="Channels" class="s3"></block>
 		</div>
-		<section s1 ng-controller="CustomerSegmentsC">
-			<h1 ng-click="showDesc()">{{ name }}</h1>
-			<i class="fa fa-{{ icon }}"></i>
-			<button ng-click="addNew()">Add New</button>
-			<ul><li ng-repeat="item in list track by $index" ng-click="deleteItem($index)">{{ item }}</li></ul>
-		</section>
-		<section s9 ng-controller="CostStructureC">
-			<h1 ng-click="showDesc()">{{ name }}</h1>
-			<i class="fa fa-{{ icon }}"></i>
-			<button ng-click="addNew()">Add New</button>
-			<ul><li ng-repeat="item in list track by $index" ng-click="deleteItem($index)">{{ item }}</li></ul>
-		</section>
-		<section s5 ng-controller="RevenueStreamsC">
-			<h1 ng-click="showDesc()">{{ name }}</h1>
-			<i class="fa fa-{{ icon }}"></i>
-			<button ng-click="addNew()">Add New</button>
-			<ul><li ng-repeat="item in list track by $index" ng-click="deleteItem($index)">{{ item }}</li></ul>
-		</section>
+		<block info="CutomerSegments" class="s1"></block>
+		<!-- bottom row -->
+		<block info="CostStructure" class="s9"></block>
+		<block info="RevenueStreams" class="s5"></block>
 	</main>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
 	<script src="public/js/app.js"></script>
