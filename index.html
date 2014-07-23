@@ -8,13 +8,13 @@
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="public/css/layout.css">
 </head>
-<body>
-	<nav ng-controller="IOController">
+<body ng-controller="CanvasController">
+	<nav>
 		<a href="" ng-click="loadBMC()" title="open canvas"><i class="fa fa-folder-open"></i></a>
 		<a href="" ng-click="saveBMC()" title="save canvas"><i class="fa fa-download"></i></a>
 		<a href="" ng-click="clearBMC()" title="clear canvas"><i class="fa fa-eraser"></i></a>
 	</nav>
-	<main dropzone ng-controller="CanvasController">
+	<main dropzone>
 		<!-- sections are numbered according to the book -->
 		<!-- top row -->
 		<section canvas-block info="KeyPartnerships" class="s8"></section>

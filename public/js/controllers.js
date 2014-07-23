@@ -3,19 +3,6 @@
 
 	// controllers 
 
-	bmcControllers.controller('IOController', function($scope, $rootScope) {
-		$scope.saveBMC = function() {
-			var canvas_data = JSON.stringify($rootScope.canvas_data);
-			var dlObj = document.createElement('a');
-		  dlObj.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(canvas_data));
-		  dlObj.setAttribute('download', 'untitled_canvas.json');
-		  dlObj.click();
-		}
-
-		$scope.loadBMC = function() {};
-		$scope.clearBMC = function() {};
-	});
-
 	bmcControllers.controller('CanvasController', function($scope, $rootScope) {
 		$scope.KeyPartnerships = { 
 			name: 'Key Partnerships', 
@@ -72,14 +59,54 @@
 			desc: 'the cash a company generates from each customer segment'
 		};
 
-		$scope.loadBMC = function(data) {
-			console.log(data);
+		var blocks =[
+			'KeyPartnerships',
+			'KeyActivities',
+			'KeyResources',
+			'ValuePropositions',
+			'CustomerRelationships',
+			'Channels',
+			'CustomerSegments',
+			'CostStructure',
+			'RevenueStreams'
+		];
 
-			for(var i = 0, block; block = Object.keys(data)[i++];) {
-				$scope[block].items = data[block];
+		//
+
+		$scope.saveBMC = function() {
+			var canvasData = JSON.stringify($rootScope.canvasData);
+			var dlObj = document.createElement('a');
+		  dlObj.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(canvasData));
+		  dlObj.setAttribute('download', 'untitled-canvas.json');
+		  dlObj.click();
+		}
+
+		$scope.cacheCanvasDataForBlock = function(block) {
+			$rootScope.canvasData[block] = $scope[block].items;
+			// console.log(JSON.stringify($rootScope.canvasData));
+		}
+
+		$scope.clearBMC = function(noconfirm) {
+			if(noconfirm || confirm('Would you like to clear the canvas?\n\nyour current canvas will be gone forever if it\'s not saved!')) {
+				for(var i = 0, block; block = blocks[i++];) {
+					$scope[block].items = [];
+					$scope.cacheCanvasDataForBlock(block);
+				}	
 			}
+		};
+		$scope.clearBMC(1);
 
-			$scope.$apply();
+		$scope.loadBMC = function(data) {
+			// TODO: check for corrupted/etc
+			if(confirm('Would you like to load this canvas?\n\nyour current canvas will be gone forever if it\'s not saved!')) {
+
+				for(var i = 0, block; block = Object.keys(data)[i++];) {
+					$scope[block].items = data[block];
+					$scope.cacheCanvasDataForBlock(block);
+				}
+
+				$scope.$apply();
+			}
 		}
 	});
 

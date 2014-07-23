@@ -2,6 +2,7 @@
 	var bmcApp = angular.module('bmcApp', ['bmcControllers']);
 
 	bmcApp.run(function($rootScope) {
+		$rootScope.canvasData = {};
 	});
 
 	// directives 
@@ -31,17 +32,15 @@
 					e.stopPropagation();
 					e.preventDefault();
 
-					// if(confirm('Would you like to load this canvas?\n\nyour current canvas will be gone forever if it\'s not saved!')) {
-						var file = e.dataTransfer.files[0];
-						var reader = new FileReader();
+					var file = e.dataTransfer.files[0];
+					var reader = new FileReader();
 
-						reader.readAsText(file);
+					reader.readAsText(file);
 
-						reader.onload = function(event) {
-							content = JSON.parse(event.target.result);
-							$scope.loadBMC(content);
-						};
-					// }
+					reader.onload = function(event) {
+						content = JSON.parse(event.target.result);
+						$scope.loadBMC(content);
+					};
 				}
 
 				$elem.bind('dragenter', onDragEnter);
@@ -68,12 +67,14 @@
 					var itemname = prompt('New item name');
 					if(itemname) {
 						$scope.block.items.push(itemname);
+						$scope.$parent.cacheCanvasDataForBlock($attrs.info);
 					}
 				}
 
 				$scope.delItem = function($index) {
 					if(confirm('Delete ' + $scope.block.items[$index] + '?')) {
 						$scope.block.items.splice($index, 1);
+						$scope.$parent.cacheCanvasDataForBlock($attrs.info);
 					}
 				}
 
