@@ -7,10 +7,10 @@
 
 	// directives 
 
-	// allows main element to load files
-	bmcApp.directive('main', function() {
+	// allows dropzone element to load files
+	bmcApp.directive('dropzone', function() {
 		var data = {
-			restrict: 'E',
+			restrict: 'A',
 			link: function($scope, $elem, $attrs) {
 
 				function onDragEnter(e) {
