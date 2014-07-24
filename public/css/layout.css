@@ -28,6 +28,21 @@ body {
 	user-select: none;
 }
 
+#dropHover {
+	display: none;
+	position: fixed;
+	z-index: 5;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 250px;
+	color: hsla(0, 0%, 100%, 0.8);
+	font-size: 25vmax;
+	text-align: center;
+	background-color: hsla(0, 0%, 0%, 0.5);
+}
+
 nav {
 	position: fixed;
 	width: 50px;
@@ -37,7 +52,7 @@ nav {
 	text-align: center;
 	padding: 25px 10px;
 	font-weight: lighter;
-	background-color: #01A4A4;
+	background-color: hsla(180, 99%, 32%, 1);
 }
 
 	nav > a {

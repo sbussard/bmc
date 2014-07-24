@@ -12,10 +12,12 @@
 		var data = {
 			restrict: 'A',
 			link: function($scope, $elem, $attrs) {
+				var dh = document.getElementById('dropHover');
 
 				function onDragEnter(e) {
 					e.stopPropagation();
 					e.preventDefault();
+					dh.style.display = 'block';
 				}
 
 				function onDragOver(e) {
@@ -26,11 +28,15 @@
 				function onDragLeave(e) {
 					e.stopPropagation();
 					e.preventDefault();
+					if(e.clientX == 0 && e.clientY == 0) {
+						dh.style.display = 'none';
+					}
 				}
 
 				function onDropFile(e) {
 					e.stopPropagation();
 					e.preventDefault();
+					dh.style.display = 'none';
 
 					var file = e.dataTransfer.files[0];
 					var reader = new FileReader();
