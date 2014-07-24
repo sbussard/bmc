@@ -97,3 +97,12 @@
 
 
 }());
+
+// non-angular stuff
+
+var confirmExit = function() {
+	var message = 'All unsaved changes will be lost!';
+	return message;
+}
+
+window.onbeforeunload = confirmExit;
