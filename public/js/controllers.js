@@ -75,10 +75,8 @@
 
 		$scope.saveBMC = function() {
 			var canvasData = JSON.stringify($rootScope.canvasData);
-			var dlObj = document.createElement('a');
-		  dlObj.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(canvasData));
-		  dlObj.setAttribute('download', 'untitled-canvas.json');
-		  dlObj.click();
+			var blob = new Blob([canvasData], { type: 'text/plain;charset=utf-8' });
+			saveAs(blob, 'untitled-canvas.json');
 		}
 
 		$scope.cacheCanvasDataForBlock = function(block) {

@@ -36,6 +36,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.2.20"
+    "angular": "~1.2.20",
+    "FileSaver.js": "eligrey/FileSaver.js"
   }
 }
