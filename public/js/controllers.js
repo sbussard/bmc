@@ -96,6 +96,10 @@
 		};
 		$scope.clearBMC(1);
 
+		$scope.describeHowToOpenCanvas = function() {
+			alert('To open a canvas file, please drag and drop the file from your desktop onto the canvas.');
+		};
+
 		$scope.loadBMC = function(data) {
 			// TODO: check for corrupted/etc
 			if(confirm('Would you like to load this canvas?\n\nyour current canvas will be gone forever if it\'s not saved!')) {
