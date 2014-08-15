@@ -1,7 +1,7 @@
-#bmc
+#BMC
 
-business model canvas html5 app built on Angular.js
+An HTML5 app for building business models on a [canvas](http://en.wikipedia.org/wiki/Business_Model_Canvas).
 
-##demo
+##Live App
 
-to check out a live demo go to [stephenbussard.com/bmc](http://stephenbussard.com/bmc)
+BMC is running live at [stephenbussard.com/bmc](http://stephenbussard.com/bmc)
