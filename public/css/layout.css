@@ -75,7 +75,7 @@ nav {
 	}
 
 main {
-	border-top: 1px solid #666;
+	border-bottom: 1px solid #666;
 	border-left: 1px solid #666;
 	overflow: auto;
 	height: 100%;
@@ -86,7 +86,7 @@ section {
 	float: left;
 	position: relative;
 	padding: 1vmin;
-	border-bottom: 1px solid #666;
+	border-top: 1px solid #666;
 	border-right: 1px solid #666;
 }
 	section > h1 {
